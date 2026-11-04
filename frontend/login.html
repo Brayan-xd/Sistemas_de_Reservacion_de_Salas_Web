@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservación de Salas Web | Iniciar Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="index.html" class="logo">
+                <div class="logo-icon">R</div>
+                <div class="logo-text">
+                    <span>Sistema de Reservación</span>
+                    <small>de Salas Web</small>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#espacios">Espacios</a></li>
+                <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- SECCION DE LOGIN -->
+    <main>
+        <section class="login-section">
+            <div class="container login-container">
+                
+                <div class="login-card">
+                    <div class="login-header">
+                        <span class="tag">
+                            <span class="status-dot"></span>
+                            Acceso Administrativo
+                        </span>
+                        <h1>Bienvenido de nuevo</h1>
+                        <p>Ingresa tus credenciales para gestionar las reservaciones y los espacios institucionales.</p>
+                    </div>
+
+                    <form action="#" method="POST" class="login-form">
+                        <div class="form-group">
+                            <label for="email">Correo institucional o usuario</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">✉</span>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    placeholder="admin@institucion.edu.mx" 
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="label-row">
+                                <label for="password">Contraseña</label>
+                                <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                            </div>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🔒</span>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    class="form-input" 
+                                    placeholder="••••••••" 
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember">
+                                <span>Mantener sesión iniciada</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-full">
+                            Iniciar sesión →
+                        </button>
+                    </form>
+
+                    <div class="login-footer">
+                        <a href="index.html" class="back-link">← Volver a la página principal</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PAGINA -->
+    <footer class="footer" id="contacto">
+        <div class="container footer-content">
+
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <div class="logo-icon">R</div>
+                    <div class="logo-text">
+                        <span>Reserva</span>
+                        <small>INSTITUCIONAL</small>
+                    </div>
+                </a>
+
+                <p>
+                    Sistema web para la consulta y reservación
+                    de espacios institucionales.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="index.html#espacios">Espacios</a>
+                <a href="index.html#como-funciona">Cómo funciona</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Acceso</h4>
+                <a href="disponibilidad.html">Disponibilidad</a>
+                <a href="login.html">Iniciar sesión como administrador</a>
+            </div>
+
+        </div>
+
+        <div class="container footer-bottom">
+            <p>© 2026 Sistema de Reservaciones Institucionales.</p>
+            <span>Todos los derechos reservados.</span>
+        </div>
+    </footer>
+
+ <script>
+        // Menú móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+            });
+        }
+
+        // Redirección al módulo de Administración de Salas después de iniciar sesión
+        const loginForm = document.querySelector('.login-form');
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                if (email && password) {
+                    // Guardar sesión administrativa activa
+                    sessionStorage.setItem('admin_sesion_activa', 'true');
+                    sessionStorage.setItem('admin_usuario', email);
+                    window.location.href = 'admin-salas.html';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
