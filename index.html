@@ -302,24 +302,6 @@
             </div>
         </section>
 
-        <!-- LLAMADO A LA ACCION -->
-        <section class="cta-section">
-            <div class="container cta-content">
-                <div>
-                    <span class="cta-label">RESERVACIONES EN LÍNEA</span>
-                    <h2>¿Necesitas reservar un espacio?</h2>
-                    <p>
-                        Consulta los horarios disponibles y realiza
-                        tu reservación de manera sencilla.
-                    </p>
-                </div>
-
-                <a href="disponibilidad.html" class="btn-cta">
-                    Comenzar reservación →
-                </a>
-            </div>
-        </section>
-
     </main>
 
     <!-- PIE DE PAGINA -->
@@ -361,21 +343,6 @@
             <span>Todos los derechos reservados.</span>
         </div>
     </footer>
-
-    <script>
-        const menuToggle = document.getElementById("menuToggle");
-        const navLinks = document.getElementById("navLinks");
-
-        menuToggle.addEventListener("click", () => {
-            navLinks.classList.toggle("show");
-        });
-
-        navLinks.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("show");
-            });
-        });
-    </script>
 
 </body>
 </html>
