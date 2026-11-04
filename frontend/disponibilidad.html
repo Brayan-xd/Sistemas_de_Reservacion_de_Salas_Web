@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Reservación de Salas Web | Disponibilidad</title>
+    <title>Sistema de Reservación de Salas Web | Disponibilidad y Reservación</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,6 @@
         <nav class="navbar container">
 
             <a href="index.html" class="logo">
-                <div class="logo-icon">R</div>
                 <div class="logo-text">
                     <span>Sistema de Reservación</span>
                     <small>de Salas Web</small>
@@ -43,12 +42,15 @@
         <!-- ENCABEZADO DE SECCIÓN DE DISPONIBILIDAD -->
         <div class="section-heading">
             <div>
-                <span class="section-tag">CONSULTA DE HORARIOS</span>
+                <span class="section-tag">CONSULTA Y REGISTRO DE RESERVACIONES</span>
                 <h2>Disponibilidad de Espacios</h2>
-                <p>Selecciona una fecha y consulta los 13 bloques horarios de cada sala (08:00 a 21:00).</p>
+                <p>Selecciona una fecha, haz clic en uno o más bloques horarios libres consecutivos (08:00 a 21:00) y completa el formulario.</p>
             </div>
             <a href="index.html" class="text-link">← Volver al Inicio</a>
         </div>
+
+        <!-- 7. CONTENEDOR DINÁMICO DE MENSAJES DEL SISTEMA (Confirmaciones, Errores, Avisos) -->
+        <div id="systemMessageContainer" class="system-message-container" aria-live="assertive"></div>
 
         <!-- MAQUETACIÓN DEL SELECTOR DE FECHA Y FILTROS -->
         <section class="filter-panel">
@@ -72,18 +74,130 @@
                 <button type="submit" class="btn-primary filter-btn">Consultar Fecha</button>
             </form>
 
-            <!-- INDICADORES VISUALES DE ESTADO -->
-            <div style="display: flex; gap: 15px; align-items: center; margin-top: 18px; padding-top: 15px; border-top: 1px solid var(--border); flex-wrap: wrap;">
-                <span style="font-size: 12px; font-weight: 700; color: var(--secondary);">Estados de los bloques:</span>
+            <!-- LEYENDA DE ESTADOS VISUALES -->
+            <div class="status-legend">
+                <span class="legend-title">Estados de los bloques:</span>
                 <span class="badge badge-available">● DISPONIBLE</span>
-                <span class="badge badge-occupied">● OCUPADO (Muestra el área solicitante)</span>
+                <span class="badge badge-selected">● SELECCIONADO</span>
+                <span class="badge badge-occupied">● OCUPADO </span>
             </div>
         </section>
 
-        <!-- CUADRÍCULA DE DISPONIBILIDAD (4 SALAS x 13 BLOQUES HORARIOS DE 08:00 A 21:00) -->
-        <section class="availability-list" id="availabilityContainer" aria-live="polite">
-            <!-- Se renderiza dinámicamente desde js/app.js al consumir el endpoint de fechas -->
-        </section>
+        <!-- LAYOUT DE DOS COLUMNAS: CUADRÍCULA + FORMULARIO DE RESERVACIÓN -->
+        <div class="reservation-workspace">
+
+            <!-- CUADRÍCULA DE DISPONIBILIDAD (4 SALAS x 13 BLOQUES HORARIOS) -->
+            <section class="availability-list" id="availabilityContainer" aria-live="polite">
+                <!-- Se carga dinámicamente con js/app.js -->
+            </section>
+
+            <!-- 4. FORMULARIO HTML DE RESERVACIÓN -->
+            <aside class="availability-card reservation-form-panel" id="panelFormularioReserva">
+                <div class="card-header" style="margin-bottom: 14px;">
+                    <div>
+                        <span class="section-tag">PASO FINAL</span>
+                        <h3 style="color: var(--secondary); font-size: 19px; margin-top: 4px;">
+                            Formulario de Reservación
+                        </h3>
+                        <p style="font-size: 12px; color: var(--text-light); margin-top: 2px;">
+                            Selecciona bloques libres consecutivos en la cuadrícula para autocompletar el horario.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mensaje interno del formulario -->
+                <div id="formSystemMessage" class="system-alert" style="display: none;"></div>
+
+                <form id="reservationForm" class="reservation-form" novalidate>
+                    <!-- Sala seleccionada -->
+                    <div class="form-group">
+                        <label for="formSala">Sala *</label>
+                        <select id="formSala" name="id_sala" class="filter-input" required>
+                            <option value="">-- Selecciona un bloque en la cuadrícula --</option>
+                            <option value="1">Sala Audiovisual 1</option>
+                            <option value="2">Sala Audiovisual 2</option>
+                            <option value="3">Sala Audiovisual 3</option>
+                            <option value="4">Biblioteca</option>
+                        </select>
+                    </div>
+
+                    <!-- Fecha seleccionada -->
+                    <div class="form-group">
+                        <label for="formFecha">Fecha de reservación *</label>
+                        <input type="date" id="formFecha" name="fecha" class="filter-input" value="2026-11-04" readonly required>
+                    </div>
+
+                    <!-- Horario (Bloques consecutivos seleccionados) -->
+                    <div class="form-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <label for="formHorarioTexto">Horario seleccionado (consecutivo) *</label>
+                            <button type="button" id="btnLimpiarSeleccion" class="link-reset-slots">
+                                Limpiar bloques
+                            </button>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="formHorarioTexto" 
+                            name="horario" 
+                            class="filter-input input-readonly-highlight" 
+                            placeholder="Ej. 09:00 - 11:00 (2 bloques)" 
+                            readonly 
+                            required
+                        >
+                        <!-- Campos ocultos con formato TIME para la BD (HH:MM:SS) -->
+                        <input type="hidden" id="formHoraInicio" name="hora_inicio" required>
+                        <input type="hidden" id="formHoraFin" name="hora_fin" required>
+                    </div>
+
+                    <!-- Área solicitante -->
+                    <div class="form-group">
+                        <label for="formArea">Área solicitante *</label>
+                        <input 
+                            type="text" 
+                            id="formArea" 
+                            name="area_solicitante" 
+                            class="filter-input" 
+                            placeholder="Ej. Ingeniería en Sistemas Computacionales" 
+                            maxlength="120" 
+                            required
+                        >
+                    </div>
+
+                    <!-- Responsable -->
+                    <div class="form-group">
+                        <label for="formResponsable">Persona responsable *</label>
+                        <input 
+                            type="text" 
+                            id="formResponsable" 
+                            name="responsable" 
+                            class="filter-input" 
+                            placeholder="Nombre completo del responsable" 
+                            maxlength="120" 
+                            required
+                        >
+                    </div>
+
+                    <!-- Correo electrónico -->
+                    <div class="form-group">
+                        <label for="formCorreo">Correo electrónico institucional *</label>
+                        <input 
+                            type="email" 
+                            id="formCorreo" 
+                            name="correo" 
+                            class="filter-input" 
+                            placeholder="nombre.apellido@institucion.edu.mx" 
+                            maxlength="160" 
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" id="btnEnviarReserva" class="btn-primary btn-full">
+                        Confirmar Reservación →
+                    </button>
+                </form>
+            </aside>
+
+        </div>
 
     </main>
 
