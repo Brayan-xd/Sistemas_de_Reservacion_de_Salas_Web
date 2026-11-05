@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservación de Salas Web | Inicio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="index.html" class="logo">
+                <div class="logo-text">
+                    <span>Sistema de Reservación</span>
+                    <small>de Salas Web</small>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="#espacios">Espacios</a></li>
+                <li><a href="#como-funciona">Cómo funciona</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="disponibilidad.html">Disponibilidad</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- SECCION PRINCIPAL -->
+        <section class="hero">
+            <div class="container hero-content">
+
+                <div class="hero-text">
+                    <span class="tag">
+                        <span class="status-dot"></span>
+                        Sistema de reservaciones
+                    </span>
+
+                    <h1>
+                        Reserva espacios<br>
+                        <span>de manera fácil y sencilla</span>
+                    </h1>
+
+                    <p>
+                        Consulta la disponibilidad de los espacios institucionales,
+                        selecciona el horario que necesitas y realiza tu reservación
+                        desde cualquier lugar.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="disponibilidad.html" class="btn-primary">
+                            Consultar disponibilidad →
+                        </a>
+
+                        <a href="#espacios" class="btn-secondary">
+                            Conocer espacios
+                        </a>
+                    </div>
+
+                    <div class="hero-info">
+                        <div class="info-item">
+                            <strong>4</strong>
+                            <span>Espacios disponibles</span>
+                        </div>
+
+                        <div class="info-divider"></div>
+
+                        <div class="info-item">
+                            <strong>24/7</strong>
+                            <span>Consulta en línea</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <div>
+                                <span class="visual-subtitle">ESPACIOS INSTITUCIONALES</span>
+                                <h3>Consulta disponibilidad</h3>
+                            </div>
+                            <span class="calendar-icon">▦</span>
+                        </div>
+
+                        <div class="visual-date">
+                            <span>Espacios registrados</span>
+                            <strong>4 espacios</strong>
+                        </div>
+
+                        <div class="visual-room">
+                            <div class="room-icon blue">▣</div>
+                            <div class="room-info">
+                                <strong>Sala audiovisual 1</strong>
+                                <small>Espacio audiovisual</small>
+                            </div>
+                            <span class="room-arrow">→</span>
+                        </div>
+
+                        <div class="visual-room">
+                            <div class="room-icon purple">▣</div>
+                            <div class="room-info">
+                                <strong>Sala audiovisual 2</strong>
+                                <small>Espacio audiovisual</small>
+                            </div>
+                            <span class="room-arrow">→</span>
+                        </div>
+
+                        <div class="visual-room">
+                            <div class="room-icon orange">▣</div>
+                            <div class="room-info">
+                                <strong>Sala audiovisual 3</strong>
+                                <small>Espacio audiovisual</small>
+                            </div>
+                            <span class="room-arrow">→</span>
+                        </div>
+
+                        <div class="visual-room">
+                            <div class="room-icon green">▤</div>
+                            <div class="room-info">
+                                <strong>Biblioteca</strong>
+                                <small>Espacio para eventos</small>
+                            </div>
+                            <span class="room-arrow">→</span>
+                        </div>
+
+                    </div>
+
+                    <div class="floating-card">
+                        <span class="floating-check">✓</span>
+                        <div>
+                            <strong>Reservación sencilla</strong>
+                            <small>Todo desde un mismo lugar</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ESPACIOS -->
+        <section class="spaces section-padding" id="espacios">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-tag">NUESTROS ESPACIOS</span>
+                        <h2>Encuentra el espacio que necesitas</h2>
+                        <p>
+                            Contamos con diferentes espacios institucionales
+                            para realizar tus actividades.
+                        </p>
+                    </div>
+
+                    <a href="disponibilidad.html" class="text-link">
+                        Ver disponibilidad →
+                    </a>
+                </div>
+
+                <div class="spaces-grid">
+
+                    <article class="space-card">
+                        <div class="space-image image-one">
+                            <span class="space-number">01</span>
+                            <span class="space-symbol">▣</span>
+                        </div>
+                        <div class="space-content">
+                            <span class="space-category">AUDIOVISUAL</span>
+                            <h3>Sala audiovisual 1</h3>
+                            <p>
+                                Espacio equipado para presentaciones,
+                                exposiciones y actividades académicas
+                                en el edificio A.
+                            </p>
+                            <a href="disponibilidad.html" class="space-link">
+                                Consultar horarios →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="space-card">
+                        <div class="space-image image-two">
+                            <span class="space-number">02</span>
+                            <span class="space-symbol">▣</span>
+                        </div>
+                        <div class="space-content">
+                            <span class="space-category">AUDIOVISUAL</span>
+                            <h3>Sala audiovisual 2</h3>
+                            <p>
+                                Espacio equipado para presentaciones,
+                                exposiciones y actividades académicas
+                                en el edificio B.
+                            </p>
+                            <a href="disponibilidad.html" class="space-link">
+                                Consultar horarios →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="space-card">
+                        <div class="space-image image-three">
+                            <span class="space-number">03</span>
+                            <span class="space-symbol">▣</span>
+                        </div>
+                        <div class="space-content">
+                            <span class="space-category">AUDIOVISUAL</span>
+                            <h3>Sala audiovisual 3</h3>
+                            <p>
+                                Espacio equipado para presentaciones,
+                                exposiciones y actividades académicas
+                                en el edificio C.
+                            </p>
+                            <a href="disponibilidad.html" class="space-link">
+                                Consultar horarios →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="space-card">
+                        <div class="space-image image-four">
+                            <span class="space-number">04</span>
+                            <span class="space-symbol">▤</span>
+                        </div>
+                        <div class="space-content">
+                            <span class="space-category">Biblioteca</span>
+                            <h3>Biblioteca</h3>
+                            <p>
+                                Espacio destinado para eventos
+                                y conferencias.
+                            </p>
+                            <a href="disponibilidad.html" class="space-link">
+                                Consultar horarios →
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- COMO FUNCIONA -->
+        <section class="how-section section-padding" id="como-funciona">
+            <div class="container">
+
+                <div class="how-heading">
+                    <span class="section-tag">PROCESO DE RESERVACIÓN</span>
+                    <h2>Reserva en tres sencillos pasos</h2>
+                    <p>
+                        Realiza tu reservación de forma rápida y sin complicaciones.
+                    </p>
+                </div>
+
+                <div class="steps-grid">
+
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <div class="step-icon">▦</div>
+                        <h3>Selecciona una fecha</h3>
+                        <p>
+                            Consulta el calendario y selecciona el día
+                            en el que necesitas utilizar un espacio.
+                        </p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <div class="step-icon">◷</div>
+                        <h3>Elige un horario</h3>
+                        <p>
+                            Revisa los horarios disponibles y selecciona
+                            el espacio que deseas reservar.
+                        </p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <div class="step-icon">✓</div>
+                        <h3>Confirma tu reservación</h3>
+                        <p>
+                            Completa tus datos y recibe una confirmación
+                            de tu reservación por correo electrónico.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PAGINA -->
+    <footer class="footer" id="contacto">
+        <div class="container footer-content">
+
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <div class="logo-icon">R</div>
+                    <div class="logo-text">
+                        <span>Reserva</span>
+                        <small>INSTITUCIONAL</small>
+                    </div>
+                </a>
+
+                <p>
+                    Sistema web para la consulta y reservación
+                    de espacios institucionales.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="#espacios">Espacios</a>
+                <a href="#como-funciona">Cómo funciona</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Acceso</h4>
+                <a href="disponibilidad.html">Disponibilidad</a>
+                <a href="login.html">Iniciar sesión como adminstrador</a>
+            </div>
+
+        </div>
+
+        <div class="container footer-bottom">
+            <p>© 2026 Sistema de Reservaciones Institucionales.</p>
+            <span>Todos los derechos reservados.</span>
+        </div>
+    </footer>
+
+</body>
+</html>
