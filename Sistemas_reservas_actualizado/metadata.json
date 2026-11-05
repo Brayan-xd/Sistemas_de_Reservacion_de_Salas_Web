@@ -1,0 +1,5 @@
+{
+  "name": "ReservaEspacios",
+  "description": "Sistema web institucional con servidor y base de datos MySQL (ReservaEspacios) para consulta de disponibilidad, reservación y cancelación de salas audiovisuales y biblioteca con notificaciones por correo.",
+  "requestFramePermissions": []
+}

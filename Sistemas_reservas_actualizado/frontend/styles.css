@@ -1,0 +1,307 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'HONOR Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('HONOR Sans Medium'), local('HONORSans-Medium'), local('HarmonyOS Sans Medium');
+}
+
+@font-face {
+  font-family: 'HONOR Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('HONOR Sans Bold'), local('HONORSans-Bold'), local('HarmonyOS Sans Bold');
+}
+
+@layer base {
+  :root {
+    --font-honor: 'HONOR Sans', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --magicos-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html {
+    font-family: var(--font-honor);
+    font-weight: 500;
+    scroll-behavior: smooth;
+    color: #FFFFFF;
+    background-color: #050914;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #050914;
+    color: #FFFFFF;
+    font-family: var(--font-honor);
+    font-weight: 500;
+  }
+
+  h1, h2, h3, h4, strong, th {
+    font-family: var(--font-honor);
+    font-weight: 700;
+  }
+}
+
+/* =========================================================
+   TRAMA OSCURA CON PUNTOS OSCUROS NOTORIOS
+========================================================= */
+
+.magicos-dark-dot-pattern {
+  background-color: #060C1A;
+  background-image:
+    radial-gradient(rgba(1, 3, 8, 0.95) 2.2px, transparent 2.2px),
+    radial-gradient(rgba(56, 189, 248, 0.16) 1.4px, transparent 1.4px);
+  background-size: 20px 20px, 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.magicos-dot-overlay {
+  background-image:
+    radial-gradient(rgba(0, 2, 6, 0.92) 2.4px, transparent 2.4px),
+    radial-gradient(rgba(125, 211, 252, 0.18) 1.3px, transparent 1.3px);
+  background-size: 22px 22px, 22px 22px;
+  background-position: 0 0, 11px 11px;
+}
+
+.font-honor-medium {
+  font-family: var(--font-honor);
+  font-weight: 500;
+}
+
+.font-honor-bold {
+  font-family: var(--font-honor);
+  font-weight: 700;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   ESTILO DE REFERENCIA: LIQUID GLASS DOCK, RIM TEXT & BARRA INFERIOR
+========================================================= */
+
+.liquid-nav-pill {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(125, 211, 252, 0.08) 100%
+  );
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.42),
+    0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.liquid-dock-bar {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 16, 32, 0.68) 0%,
+    rgba(15, 30, 56, 0.56) 50%,
+    rgba(8, 18, 36, 0.74) 100%
+  );
+  backdrop-filter: blur(36px) saturate(210%);
+  -webkit-backdrop-filter: blur(36px) saturate(210%);
+  border: 1px solid rgba(186, 230, 253, 0.36);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.38),
+    inset 0 -1px 2px rgba(56, 189, 248, 0.22),
+    0 24px 60px rgba(0, 0, 0, 0.75);
+}
+
+.liquid-dock-segment {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22);
+  transition: all 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.liquid-dock-segment:hover,
+.liquid-dock-segment:focus-within {
+  background: rgba(56, 189, 248, 0.14);
+  border-color: rgba(125, 211, 252, 0.65);
+}
+
+.liquid-hero-title {
+  color: rgba(224, 242, 254, 0.88);
+  text-shadow:
+    0 2px 24px rgba(56, 189, 248, 0.28),
+    0 1px 2px rgba(0, 0, 0, 0.65);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
+}
+
+/* =========================================================
+   HONOR MagicOS + APPLE LIQUID GLASS (FONDO NEGRO, AZUL CLARO Y BLANCO)
+========================================================= */
+
+.magicos-liquid-glass {
+  background: linear-gradient(
+    145deg,
+    rgba(10, 20, 38, 0.74) 0%,
+    rgba(5, 11, 22, 0.86) 55%,
+    rgba(12, 28, 56, 0.70) 100%
+  );
+  backdrop-filter: blur(42px) saturate(210%);
+  -webkit-backdrop-filter: blur(42px) saturate(210%);
+  border: 1px solid rgba(125, 211, 252, 0.28);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.28),
+    inset 0 -1px 2px rgba(56, 189, 248, 0.18),
+    0 28px 64px -14px rgba(0, 0, 0, 0.82),
+    0 0 36px -10px rgba(56, 189, 248, 0.14);
+  position: relative;
+}
+
+.magicos-liquid-card {
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.10) 0%,
+    rgba(56, 189, 248, 0.06) 55%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  backdrop-filter: blur(32px) saturate(190%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+  border: 1px solid rgba(186, 230, 253, 0.24);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.30),
+    0 18px 40px -12px rgba(0, 0, 0, 0.75);
+}
+
+.magicos-liquid-header {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 14, 0.78) 0%,
+    rgba(5, 12, 26, 0.62) 100%
+  );
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border-bottom: 1px solid rgba(125, 211, 252, 0.20);
+}
+
+.magicos-input {
+  background: rgba(5, 11, 24, 0.78);
+  border: 1px solid rgba(125, 211, 252, 0.30);
+  color: #FFFFFF;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.55);
+  transition: all 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magicos-input:focus {
+  outline: none;
+  border-color: #38BDF8;
+  background: rgba(8, 18, 38, 0.92);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    0 0 0 3px rgba(56, 189, 248, 0.22);
+}
+
+.magicos-input::placeholder {
+  color: rgba(186, 230, 253, 0.50);
+}
+
+.magicos-btn-primary {
+  background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(224, 242, 254, 0.55);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.55),
+    0 12px 28px -6px rgba(56, 189, 248, 0.48);
+  transition: all 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magicos-btn-primary:hover {
+  background: linear-gradient(135deg, #7DD3FC 0%, #0369A1 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.70),
+    0 16px 34px -6px rgba(56, 189, 248, 0.65);
+}
+
+.magicos-btn-ghost {
+  background: rgba(255, 255, 255, 0.09);
+  color: #E0F2FE;
+  border: 1px solid rgba(186, 230, 253, 0.36);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transition: all 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magicos-btn-ghost:hover {
+  background: rgba(56, 189, 248, 0.20);
+  border-color: #7DD3FC;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.magicos-slot-available {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(56, 189, 248, 0.04) 100%
+  );
+  border: 1px solid rgba(125, 211, 252, 0.24);
+  color: #FFFFFF;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.20),
+    0 6px 16px rgba(0, 0, 0, 0.40);
+  transition: all 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magicos-slot-available:hover {
+  background: linear-gradient(
+    145deg,
+    rgba(56, 189, 248, 0.22) 0%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  border-color: #7DD3FC;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.45),
+    0 12px 24px -6px rgba(56, 189, 248, 0.35);
+}
+
+.magicos-slot-selected {
+  background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
+  border: 1px solid #E0F2FE;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.65),
+    0 12px 26px -6px rgba(56, 189, 248, 0.58);
+}
+
+.magicos-slot-occupied {
+  background: rgba(239, 68, 68, 0.10);
+  border: 1px solid rgba(248, 113, 113, 0.28);
+  color: #FCA5A5;
+}
+
+.magicos-transition {
+  transition:
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magicos-hover-lift:hover {
+  transform: translateY(-4px);
+  border-color: rgba(125, 211, 252, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magicos-transition,
+  .magicos-hover-lift:hover,
+  .magicos-slot-available:hover,
+  .magicos-slot-selected {
+    transition: none !important;
+    transform: none !important;
+  }
+}
